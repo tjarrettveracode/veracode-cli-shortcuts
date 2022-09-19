@@ -4,9 +4,14 @@ alias vcroles="http --auth-type=veracode_hmac https://api.veracode.com/api/authn
 alias vcappcount="http --auth-type=veracode_hmac https://api.veracode.com/appsec/v1/applications | jq '.page.total_elements'"
 alias vcexpires="http --auth-type=veracode_hmac https://api.veracode.com/api/authn/v2/api_credentials | jq '.expiration_ts'" 
 alias vcrenewcreds="confirm && http --auth-type=veracode_hmac --json POST https://api.veracode.com/api/authn/v2/api_credentials" 
+alias vcrevokeself="confirm && http --auth-type=veracode_hmac DELETE https://api.veracode.com/api/authn/v2/api_credentials"
 
 vcfindapp () {
 	http --auth-type=veracode_hmac "https://api.veracode.com/appsec/v1/applications?name=$1" | jq '._embedded.applications[0].guid'
+}
+
+vcrevoke () {
+  confirm && http --auth-type=veracode_hmac DELETE https://api.veracode.com/api/authn/v2/api_credentials/$1
 }
 
 # Read a single char from /dev/tty, prompting with "$*"

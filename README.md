@@ -21,6 +21,7 @@ Copy the `.veracode_alias` file to your user's root directory:
 ```shell
 cp .veracode_alias ~
 ```
+
 Edit your `.zshrc` file and add the following lines:
 
 ```shell
@@ -40,7 +41,9 @@ The `.veracode_alias` file contains aliases and functions that can be used to au
 * `vcroles`: prints the list of roles associated with the currently active Veracode credentials.
 * `vcappcount`: prints the number of application profiles visible in the Veracode platform using the currently active Veracode credentials.
 * `vcrenewcreds`: (REQUIRES CONFIRMATION) generates and prints to the console new API credentials for the currently active Veracode user, and sets the existing credentials to expire in 24 hours. *Caution*: You must copy these credentials from the console or they will be lost!
-* `vcfindapp` (*appname*): Looks for applications with names that match `appname` and returns the GUID for the first matching application.
+* `vcfindapp` (`appname`): Looks for applications with names that match `appname` and returns the GUID for the first matching application.
+* `vcrevoke` (`api id`): (REQUIRES CONFIRMATION) Revokes the API credentials identified by `api id`.
+* `vcrevokeself`: (REQUIRES CONFIRMATION) Revokes the currently active API credentials.
 
 *Note*: Typing `vc` and then tabbing at the command line will list all the available commands that start with `vc`.
 
